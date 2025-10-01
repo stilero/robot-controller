@@ -9,7 +9,7 @@ public sealed class RobotControllerTests
     {
         // Arrange
         var room = new Room(5, 5);
-        var robot = new Robot(1, 2, Direction.North);
+        var robot = new Robot(1, 2, Direction.N);
         var controller = new RobotController(room, robot);
         var commands = "RFRFFRFRF";
         // Act
@@ -18,14 +18,14 @@ public sealed class RobotControllerTests
         var (x, y, direction) = robot.GetStatus();
         Assert.Equal(1, x);
         Assert.Equal(3, y);
-        Assert.Equal(Direction.North, direction);
+        Assert.Equal(Direction.N, direction);
     }
     [Fact]
     public void ExecuteCommands2_ShouldUpdateRobotPositionAndDirection()
     {
         // Arrange
         var room = new Room(5, 5);
-        var robot = new Robot(0, 0, Direction.East);
+        var robot = new Robot(0, 0, Direction.E);
         var controller = new RobotController(room, robot);
         var commands = "RFLFFLRF";
         // Act
@@ -34,14 +34,14 @@ public sealed class RobotControllerTests
         var (x, y, direction) = robot.GetStatus();
         Assert.Equal(3, x);
         Assert.Equal(1, y);
-        Assert.Equal(Direction.East, direction);
+        Assert.Equal(Direction.E, direction);
     }
     [Fact]
     public void ExecuteCommands_ShouldThrowException_WhenMovingOutOfBounds()
     {
         // Arrange
         var room = new Room(5, 5);
-        var robot = new Robot(0, 0, Direction.North);
+        var robot = new Robot(0, 0, Direction.N);
         var controller = new RobotController(room, robot);
         var commands = "F";
         // Act & Assert
@@ -52,7 +52,7 @@ public sealed class RobotControllerTests
     {
         // Arrange
         var room = new Room(5, 5);
-        var robot = new Robot(1, 2, Direction.North);
+        var robot = new Robot(1, 2, Direction.N);
         var controller = new RobotController(room, robot);
         var commands = "LFX";
         // Act & Assert

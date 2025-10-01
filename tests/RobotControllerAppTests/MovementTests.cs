@@ -5,10 +5,10 @@ namespace RobotControllerAppTests;
 public sealed class MovementTests
 {
     [Theory]
-    [InlineData(Direction.North, Direction.West)]
-    [InlineData(Direction.West, Direction.South)]
-    [InlineData(Direction.South, Direction.East)]
-    [InlineData(Direction.East, Direction.North)]
+    [InlineData(Direction.N, Direction.W)]
+    [InlineData(Direction.W, Direction.S)]
+    [InlineData(Direction.S, Direction.E)]
+    [InlineData(Direction.E, Direction.N)]
     public void TurnLeft_ShouldReturnExpectedDirection(Direction current, Direction expected)
     {
         //Act
@@ -18,10 +18,10 @@ public sealed class MovementTests
     }
 
     [Theory]
-    [InlineData(Direction.North, Direction.East)]
-    [InlineData(Direction.East, Direction.South)]
-    [InlineData(Direction.South, Direction.West)]
-    [InlineData(Direction.West, Direction.North)]
+    [InlineData(Direction.N, Direction.E)]
+    [InlineData(Direction.E, Direction.S)]
+    [InlineData(Direction.S, Direction.W)]
+    [InlineData(Direction.W, Direction.N)]
     public void TurnRight_ShouldReturnExpectedDirection(Direction current, Direction expected)
     {
         //Act
@@ -31,10 +31,10 @@ public sealed class MovementTests
     }
 
     [Theory]
-    [InlineData(Direction.North, 0, -1)]
-    [InlineData(Direction.East, 1, 0)]
-    [InlineData(Direction.South, 0, 1)]
-    [InlineData(Direction.West, -1, 0)]
+    [InlineData(Direction.N, 0, -1)]
+    [InlineData(Direction.E, 1, 0)]
+    [InlineData(Direction.S, 0, 1)]
+    [InlineData(Direction.W, -1, 0)]
     public void WalkForward_ShouldReturnExpectedDelta(Direction current, int expectedDx, int expectedDy)
     {
         //Act

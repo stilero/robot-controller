@@ -2,10 +2,10 @@
 
 public enum Direction
 {
-    North = 0,
-    East = 1,
-    South = 2,
-    West = 3
+    N = 0,
+    E = 1,
+    S = 2,
+    W = 3
 }
 
 public static class Movement
@@ -24,10 +24,10 @@ public static class Movement
 
     public static (int movementX, int movementY) WalkForward(this Direction currentDirection) => currentDirection switch
     {
-        Direction.North => (0, -1),
-        Direction.East => (1, 0),
-        Direction.South => (0, 1),
-        Direction.West => (-1, 0),
+        Direction.N => (0, -1),
+        Direction.E => (1, 0),
+        Direction.S => (0, 1),
+        Direction.W => (-1, 0),
         _ => new(0, 0)
     };
 }

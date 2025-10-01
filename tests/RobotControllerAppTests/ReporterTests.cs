@@ -8,7 +8,7 @@ public sealed class ReporterTests
     public void GenerateReport_ShouldReturnCorrectFormat()
     {
         // Arrange
-        var robot = new Robot(3, 4, Direction.East);
+        var robot = new Robot(3, 4, Direction.E);
         
         // Act
         var report = robot.GenerateReport();
