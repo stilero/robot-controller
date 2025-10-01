@@ -2,7 +2,7 @@
 
 namespace RobotControllerAppTests;
 
-public sealed class DirectionTests
+public sealed class MovementTests
 {
     [Theory]
     [InlineData(Direction.North, Direction.West)]
@@ -12,7 +12,7 @@ public sealed class DirectionTests
     public void TurnLeft_ShouldReturnExpectedDirection(Direction current, Direction expected)
     {
         //Act
-        var actual = DirectionOperation.TurnLeft(current);
+        var actual = Movement.TurnLeft(current);
         //Assert
         Assert.Equal(expected, actual);
     }
@@ -25,7 +25,7 @@ public sealed class DirectionTests
     public void TurnRight_ShouldReturnExpectedDirection(Direction current, Direction expected)
     {
         //Act
-        var actual = DirectionOperation.TurnRight(current);
+        var actual = Movement.TurnRight(current);
         //Assert
         Assert.Equal(expected, actual);
     }
@@ -38,7 +38,7 @@ public sealed class DirectionTests
     public void WalkForward_ShouldReturnExpectedDelta(Direction current, int expectedDx, int expectedDy)
     {
         //Act
-        var (actualDirectionX, actualDirectionY) = DirectionOperation.WalkForward(current);
+        var (actualDirectionX, actualDirectionY) = Movement.WalkForward(current);
         //Assert
         Assert.Equal(expectedDx, actualDirectionX);
         Assert.Equal(expectedDy, actualDirectionY);
