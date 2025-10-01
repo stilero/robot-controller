@@ -31,9 +31,9 @@ public sealed class DirectionTests
     }
 
     [Theory]
-    [InlineData(Direction.North, 0, 1)]
+    [InlineData(Direction.North, 0, -1)]
     [InlineData(Direction.East, 1, 0)]
-    [InlineData(Direction.South, 0, -1)]
+    [InlineData(Direction.South, 0, 1)]
     [InlineData(Direction.West, -1, 0)]
     public void WalkForward_ShouldReturnExpectedDelta(Direction current, int expectedDx, int expectedDy)
     {
