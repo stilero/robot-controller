@@ -49,4 +49,47 @@ public sealed class RobotTests
         Assert.Equal(1, y);
         Assert.Equal(Direction.North, direction);
     }
+
+    [Fact]
+    public void MultipleMovesExample1_ShouldEndAtExpectedPositionAndDirection()
+    {
+        // Arrange
+        var robot = new Robot(1, 2, Direction.North);
+        // Act
+        robot.TurnRight();
+        robot.WalkForward();
+        robot.TurnRight();
+        robot.WalkForward();
+        robot.WalkForward();
+        robot.TurnRight();
+        robot.WalkForward();
+        robot.TurnRight();
+        robot.WalkForward();
+        var (x, y, direction) = robot.GetStatus();
+        // Assert
+        Assert.Equal(1, x);
+        Assert.Equal(3, y);
+        Assert.Equal(Direction.North, direction);
+    }
+
+    [Fact]
+    public void MultipleMovesExample2_ShouldEndAtExpectedPositionAndDirection()
+    {
+        // Arrange
+        var robot = new Robot(0, 0, Direction.East);
+        // Act
+        robot.TurnRight();
+        robot.WalkForward();
+        robot.TurnLeft();
+        robot.WalkForward();
+        robot.WalkForward();
+        robot.TurnLeft();
+        robot.TurnRight();
+        robot.WalkForward();
+        var (x, y, direction) = robot.GetStatus();
+        // Assert
+        Assert.Equal(3, x);
+        Assert.Equal(1, y);
+        Assert.Equal(Direction.East, direction);
+    }
 }
