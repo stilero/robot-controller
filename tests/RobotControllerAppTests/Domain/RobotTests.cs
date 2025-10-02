@@ -1,6 +1,6 @@
 ﻿using RobotControllerApp.Domain;
 
-namespace RobotControllerAppTests;
+namespace RobotControllerAppTests.Domain;
 
 public sealed class RobotTests
 {

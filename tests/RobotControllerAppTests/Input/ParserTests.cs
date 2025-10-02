@@ -1,7 +1,7 @@
 ﻿using RobotControllerApp.Domain;
 using RobotControllerApp.Input;
 
-namespace RobotControllerAppTests;
+namespace RobotControllerAppTests.Input;
 
 public sealed class ParserTests
 {

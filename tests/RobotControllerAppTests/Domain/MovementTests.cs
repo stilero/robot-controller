@@ -1,6 +1,6 @@
 ﻿using RobotControllerApp.Domain;
 
-namespace RobotControllerAppTests;
+namespace RobotControllerAppTests.Domain;
 
 public sealed class MovementTests
 {
@@ -12,7 +12,7 @@ public sealed class MovementTests
     public void TurnLeft_ShouldReturnExpectedDirection(Direction current, Direction expected)
     {
         //Act
-        var actual = Movement.TurnLeft(current);
+        var actual = current.TurnLeft();
         //Assert
         Assert.Equal(expected, actual);
     }
@@ -25,7 +25,7 @@ public sealed class MovementTests
     public void TurnRight_ShouldReturnExpectedDirection(Direction current, Direction expected)
     {
         //Act
-        var actual = Movement.TurnRight(current);
+        var actual = current.TurnRight();
         //Assert
         Assert.Equal(expected, actual);
     }
@@ -38,7 +38,7 @@ public sealed class MovementTests
     public void WalkForward_ShouldReturnExpectedDelta(Direction current, int expectedDx, int expectedDy)
     {
         //Act
-        var (actualDirectionX, actualDirectionY) = Movement.WalkForward(current);
+        var (actualDirectionX, actualDirectionY) = current.WalkForward();
         //Assert
         Assert.Equal(expectedDx, actualDirectionX);
         Assert.Equal(expectedDy, actualDirectionY);
