@@ -409,13 +409,9 @@ When contributing:
 4. Update README if adding user-facing features
 5. Keep methods small and focused (Single Responsibility Principle)
 
-## License
-
-[Add your license here]
-
 ## Authors
 
-[Add author information]
+Daniel Eliasson
 
 ---
 
