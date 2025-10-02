@@ -2,8 +2,12 @@
 
 internal sealed class RobotController(Room room, Robot robot)
 {
+    private const int MaxCommandsLength = 100;
+
     public void ExecuteCommands(string commands)
     {
+        ValidateCommandsInput(commands);
+        ValidateCommandsLength(commands);
         foreach (var command in commands)
         {
             switch (command)
@@ -21,6 +25,22 @@ internal sealed class RobotController(Room room, Robot robot)
                 default:
                     throw new ArgumentException($"Invalid command: {command}");
             }
+        }
+    }
+
+    private static void ValidateCommandsLength(string commands)
+    {
+        if (commands.Length > MaxCommandsLength)
+        {
+            throw new ArgumentException($"Commands input exceeds maximum length of {MaxCommandsLength} characters.");
+        }
+    }
+
+    private static void ValidateCommandsInput(string commands)
+    {
+        if (string.IsNullOrWhiteSpace(commands))
+        {
+            throw new ArgumentException("Commands input cannot be null or empty.");
         }
     }
 
