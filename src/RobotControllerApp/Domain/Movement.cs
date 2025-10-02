@@ -24,10 +24,10 @@ internal static class Movement
 
     public static (int movementX, int movementY) WalkForward(this Direction currentDirection) => currentDirection switch
     {
-        Direction.N => (0, -1),
-        Direction.E => (1, 0),
-        Direction.S => (0, 1),
-        Direction.W => (-1, 0),
-        _ => new(0, 0)
+        Direction.N => (0, -1), // North: Y decreases (up)
+        Direction.E => (1, 0),  // East: X increases (right)
+        Direction.S => (0, 1),  // South: Y increases (down)
+        Direction.W => (-1, 0), // West: X decreases (left)
+        _ => new(0, 0)          // Default case (should not occur)
     };
 }
