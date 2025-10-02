@@ -9,7 +9,7 @@ internal static class Parser
         var parts = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
         if (parts.Length != 2 || !int.TryParse(parts[0], out var width) || !int.TryParse(parts[1], out var height))
         {
-            throw new FormatException("Invalid room dimensions. Please enter valid dimensions in the format width height for example '5 7'.");
+            throw new FormatException(ErrorMessages.InvalidRoomDimensions);
         }
         return (width, height);
     }
@@ -19,9 +19,8 @@ internal static class Parser
         var parts = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
         if (parts.Length != 3 || !int.TryParse(parts[0], out var x) || !int.TryParse(parts[1], out var y) || !Enum.TryParse<Direction>(parts[2], true, out var direction))
         {
-            throw new FormatException("Invalid starting position. Please enter a valid position in the format x y direction for example '1 2 N'.");
+            throw new FormatException(ErrorMessages.InvalidStartingPosition);
         }
         return (x, y, direction);
     }
-
 }

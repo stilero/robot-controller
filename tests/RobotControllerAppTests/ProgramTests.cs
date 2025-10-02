@@ -1,3 +1,5 @@
+using RobotControllerApp.Input;
+
 namespace RobotControllerAppTests;
 
 public class ProgramTests
@@ -38,7 +40,7 @@ public class ProgramTests
         // Assert
         var actualErrorOutput = errorWriter.ToString();
         Assert.Equal(0, result);
-        Assert.Contains("Error executing commands: Invalid room dimensions.", actualErrorOutput);
+        Assert.Contains(ErrorMessages.InvalidRoomDimensions, actualErrorOutput);
     }
 
     [Fact]
@@ -55,7 +57,7 @@ public class ProgramTests
         // Assert
         var actualErrorOutput = errorWriter.ToString();
         Assert.Equal(0, result);
-        Assert.Contains("Error executing commands: Invalid starting position.", actualErrorOutput);
+        Assert.Contains(ErrorMessages.InvalidStartingPosition, actualErrorOutput);
     }
 
     [Fact]
@@ -63,6 +65,7 @@ public class ProgramTests
     {
         // Arrange
         var input = $"5 5\n1 2 N\nX\n";
+        var expectedErrorOutput = string.Format(ErrorMessages.InvalidCommand, "X");
         using var inputReader = new StringReader(input);
         using var outputWriter = new StringWriter();
         using var errorWriter = new StringWriter();
@@ -72,6 +75,6 @@ public class ProgramTests
         // Assert
         var actualErrorOutput = errorWriter.ToString();
         Assert.Equal(0, result);
-        Assert.Contains("Error executing commands: Invalid command: X", actualErrorOutput);
+        Assert.Contains(expectedErrorOutput, actualErrorOutput);
     }
 }

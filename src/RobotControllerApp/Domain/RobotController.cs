@@ -1,4 +1,6 @@
-﻿namespace RobotControllerApp.Domain;
+using RobotControllerApp.Input;
+
+namespace RobotControllerApp.Domain;
 
 internal sealed class RobotController(Room room, Robot robot)
 {
@@ -23,7 +25,7 @@ internal sealed class RobotController(Room room, Robot robot)
                     ValidatePositionWithinBounds();
                     break;
                 default:
-                    throw new ArgumentException($"Invalid command: {command}");
+                    throw new ArgumentException(string.Format(ErrorMessages.InvalidCommand, command));
             }
         }
     }
@@ -32,7 +34,7 @@ internal sealed class RobotController(Room room, Robot robot)
     {
         if (commands.Length > MaxCommandsLength)
         {
-            throw new ArgumentException($"Commands input exceeds maximum length of {MaxCommandsLength} characters.");
+            throw new ArgumentException(string.Format(ErrorMessages.CommandsTooLong, MaxCommandsLength));
         }
     }
 
@@ -40,7 +42,7 @@ internal sealed class RobotController(Room room, Robot robot)
     {
         if (string.IsNullOrWhiteSpace(commands))
         {
-            throw new ArgumentException("Commands input cannot be null or empty.");
+            throw new ArgumentException(ErrorMessages.CommandsInputEmpty);
         }
     }
 
@@ -49,7 +51,7 @@ internal sealed class RobotController(Room room, Robot robot)
         var (x, y, _) = robot.GetStatus();
         if (!room.IsWithinBounds(x, y))
         {
-            throw new InvalidOperationException("Robot moved out of room bounds.");
+            throw new InvalidOperationException(ErrorMessages.RobotOutOfBounds);
         }
     }
 }

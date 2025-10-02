@@ -21,9 +21,9 @@ public static partial class Program
                 }
                 catch (Exception ex)
                 {
-                    error.WriteLine($"Error executing commands: {ex.Message}");
+                    error.WriteLine(ex.Message);
                 }
-                output.WriteLine("Do you want to run another simulation? (y/n)");
+                output.WriteLine(Prompts.ContinuePrompt);
                 if(input.ReadLine()?.Trim().ToLower() != "y")
                 {
                     break;
@@ -34,51 +34,51 @@ public static partial class Program
         }
         catch (Exception ex)
         {
-            error.WriteLine($"Unexpected error: {ex.Message}");
+            error.WriteLine(ErrorMessages.UnexpectedError, ex.Message);
             return 1;
         }
     }
 
     static Room GetRoom(TextReader input, TextWriter output)
     {
-        output.WriteLine("Enter size of room 'x y' for example '5 5'.");
+        output.WriteLine(Prompts.RoomSize);
         var roomSizeInput = input.ReadLine();
         if (string.IsNullOrWhiteSpace(roomSizeInput))
         {
-            throw new InvalidOperationException("Room dimensions input cannot be null.");
+            throw new InvalidOperationException(ErrorMessages.InvalidRoomDimensions);
         }
         var (width, height) = Parser.ParseDimensions(roomSizeInput);
         var room = new Room(width, height);
         if(!room.IsWithinBounds(width-1, height-1))
         {
-             throw new InvalidOperationException("Room dimensions must be positive integers.");
+             throw new InvalidOperationException(ErrorMessages.InvalidRoomDimensions);
         }
         return room;
     }
 
     static Robot GetRobot(TextReader input, TextWriter output, Room room)
     {
-        output.WriteLine("Enter Robot Starting position and facing direction 'x y d' for example '1 2 N'.");
+        output.WriteLine(Prompts.RobotStartingPosition);
         var startingPositionInput = input.ReadLine();
         if (string.IsNullOrWhiteSpace(startingPositionInput))
         {
-            throw new InvalidOperationException("Robot starting position input cannot be null.");
+            throw new InvalidOperationException(ErrorMessages.InvalidStartingPosition);
         }
         var (startX, startY, startDirection) = Parser.ParseStartingPosition(startingPositionInput);
         if (!room.IsWithinBounds(startX, startY))
         {
-            throw new ArgumentException("Robot starting position is out of room bounds.");
+            throw new ArgumentException(ErrorMessages.StartingPositionOutOfBounds);
         }
         return new Robot(startX, startY, startDirection);
     }
 
     static string GetCommandsInput(TextReader input, TextWriter output)
     {
-        output.WriteLine("Enter Command input. Valid commands are L (Left) R (Right) F (Forward). for example 'LFRFFLRF'.");
+        output.WriteLine(Prompts.RobotCommands);
         var commandsInput = input.ReadLine();
         if (string.IsNullOrWhiteSpace(commandsInput))
         {
-            throw new InvalidOperationException("Commands input cannot be null.");
+            throw new InvalidOperationException(ErrorMessages.CommandsInputEmpty);
         }
         return commandsInput;
     }

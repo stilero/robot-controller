@@ -1,4 +1,6 @@
-﻿namespace RobotControllerApp.Domain;
+﻿using RobotControllerApp.Input;
+
+namespace RobotControllerApp.Domain;
 
 internal sealed record Room
 {   
@@ -7,14 +9,14 @@ internal sealed record Room
 
     public Room(int width, int height)
     {
-        if (width <= 0)
+        if (width <= 0 || height <= 0)
         {
-            throw new ArgumentOutOfRangeException(nameof(width), "Width must be greater than zero.");
+            throw new ArgumentOutOfRangeException(nameof(width), ErrorMessages.WidthHeightPositive);
         }
 
         if (height <= 0)
         {
-            throw new ArgumentOutOfRangeException(nameof(height), "Height must be greater than zero.");
+            throw new ArgumentOutOfRangeException(nameof(height), ErrorMessages.WidthHeightPositive);
         }
 
         Width = width;
