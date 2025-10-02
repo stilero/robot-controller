@@ -8,7 +8,7 @@ public enum Direction
     W = 3
 }
 
-public static class Movement
+internal static class Movement
 {
     private static readonly int MaxDirectionValue = (int)Enum.GetValues<Direction>().Max();
 

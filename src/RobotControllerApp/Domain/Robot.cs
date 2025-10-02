@@ -1,6 +1,6 @@
 ﻿namespace RobotControllerApp.Domain;
 
-public sealed class Robot(int x, int y, Direction direction)
+internal sealed class Robot(int x, int y, Direction direction)
 {
 
     public void TurnLeft() => direction = Movement.TurnLeft(direction);

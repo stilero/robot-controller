@@ -1,6 +1,6 @@
 ﻿namespace RobotControllerApp.Domain;
 
-public static class Reporter
+internal static class Reporter
 {
     public static string GenerateReport(this Robot robot)
     {

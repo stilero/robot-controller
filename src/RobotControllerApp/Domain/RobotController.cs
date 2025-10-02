@@ -1,6 +1,6 @@
 ﻿namespace RobotControllerApp.Domain;
 
-public sealed class RobotController(Room room, Robot robot)
+internal sealed class RobotController(Room room, Robot robot)
 {
     public void ExecuteCommands(string commands)
     {

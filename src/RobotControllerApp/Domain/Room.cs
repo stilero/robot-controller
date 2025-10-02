@@ -1,6 +1,6 @@
 ﻿namespace RobotControllerApp.Domain;
 
-public sealed record Room
+internal sealed record Room
 {   
     public int Width { get; init; }
     public int Height { get; init; }
