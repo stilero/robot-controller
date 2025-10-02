@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 	<ItemGroup>
-		<InternalsVisibleTo Include="RobotControllerAppTests"/>
+		<InternalsVisibleTo Include="RobotControllerAppTests" />
 	</ItemGroup>
 
 </Project>
