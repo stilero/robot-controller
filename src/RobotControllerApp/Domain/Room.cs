@@ -3,7 +3,7 @@
 namespace RobotControllerApp.Domain;
 
 internal sealed record Room
-{   
+{
     public int Width { get; init; }
     public int Height { get; init; }
 
@@ -22,6 +22,6 @@ internal sealed record Room
         Width = width;
         Height = height;
     }
-    public bool IsWithinBounds(int x, int y) => 
+    public bool IsWithinBounds(int x, int y) =>
         x >= 0 && x < Width && y >= 0 && y < Height;
 }

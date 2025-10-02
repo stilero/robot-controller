@@ -30,7 +30,6 @@ public static partial class Program
                 }
             }
             return 0;
-
         }
         catch (Exception ex)
         {

@@ -12,14 +12,14 @@ internal static class Movement
 {
     private static readonly int MaxDirectionValue = (int)Enum.GetValues<Direction>().Max();
 
-    public static Direction TurnLeft(this Direction currentDirection) => 
-        (Direction)((int)currentDirection -1 < 0 
+    public static Direction TurnLeft(this Direction currentDirection) =>
+        (Direction)((int)currentDirection -1 < 0
         ? MaxDirectionValue
         : (int)currentDirection - 1);
 
-    public static Direction TurnRight(this Direction currentDirection) => 
+    public static Direction TurnRight(this Direction currentDirection) =>
         (Direction)((int)currentDirection + 1 > MaxDirectionValue
-        ? 0 
+        ? 0
         : (int)currentDirection + 1);
 
     public static (int movementX, int movementY) WalkForward(this Direction currentDirection) => currentDirection switch

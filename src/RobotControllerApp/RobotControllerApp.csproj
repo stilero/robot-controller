@@ -9,5 +9,15 @@
 	<ItemGroup>
 		<InternalsVisibleTo Include="RobotControllerAppTests" />
 	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Roslynator.Analyzers" Version="4.14.0">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	</ItemGroup>
 
 </Project>
